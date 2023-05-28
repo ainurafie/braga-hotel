@@ -29,6 +29,12 @@ use App\Http\Controllers\ChangePassController;
 Route::get('/landing', function () {
     return view('front/index');
 });
+Route::get('/room2', function () {
+    return view('front/room');
+});
+Route::get('/booking', function () {
+    return view('front/booking');
+});
 Auth::routes(['register' => false, 'reset' => false, 'verify' => false]);
 
 Route::prefix('/')

@@ -35,7 +35,6 @@
    <!-- end -->
 
    <!-- home -->
-   /../assets/images/about.jpg
    <section class="home" id="home">
 
       <div class="swiper home-slider">
