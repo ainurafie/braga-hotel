@@ -12,6 +12,8 @@ use App\Http\Controllers\Admin\RoomController;
 use App\Http\Controllers\Admin\BookingListController;
 
 use App\Http\Controllers\ChangePassController;
+use App\Http\Controllers\Front\LandingController;
+use Illuminate\Support\Facades\Auth;
 
 // use Illuminate\Support\Facades\Mail;
 
@@ -26,18 +28,15 @@ use App\Http\Controllers\ChangePassController;
 |
 */
 
-Route::get('/landing', function () {
-    return view('front/index');
-});
-Route::get('/room2', function () {
-    return view('front/room');
-});
+Route::get('/', [LandingController::class, 'index'])->name('index');
+Route::get('/detail', [LandingController::class, 'detail'])->name('index.detail');
+
 Route::get('/booking', function () {
     return view('front/booking');
 });
 Auth::routes(['register' => false, 'reset' => false, 'verify' => false]);
 
-Route::prefix('/')
+Route::prefix('dashboard')
     ->get('/', [UserDashboardController::class, 'index'])
     /* 
     |--------------------------------------------------------------------------
@@ -53,7 +52,7 @@ Route::prefix('/')
     ->middleware(['auth', 'which.home'])
     ->name('user.dashboard');
 
-Route::prefix('/')
+Route::prefix('user')
     ->middleware(['auth', 'is.user'])
     ->group(function(){
         Route::get('/dashboard-booking-list', [UserDashboardController::class, 'dashboard_booking_list'])

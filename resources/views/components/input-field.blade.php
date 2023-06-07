@@ -47,6 +47,7 @@
       <textarea 
         @isset($input_id) {{ 'id='.$input_id }} @endisset
         @isset($input_name) {{ 'name='.$input_name }} @endisset
+        @isset($input_rows) {{ 'rows='.$input_rows }} @endisset
         class="form-control @isset($input_classes) {{ $input_classes }} @endisset @error($input_name) is-invalid @enderror"
         @isset($other_attributes) {{ $other_attributes }} @endisset
         >@isset($input_value){{ $input_value }}@else{{ old($input_name) }}@endisset</textarea>

@@ -51,6 +51,8 @@ class RoomController extends Controller
     {
         $data = $request->all();
 
+        // dd($data);
+
         if(isset($data['photo'])){
             $data['photo']          = $request->file('photo')->store(
                 'assets/image/room', 'public'

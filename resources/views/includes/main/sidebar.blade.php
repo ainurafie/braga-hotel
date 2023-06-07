@@ -1,10 +1,10 @@
 <div class="main-sidebar">
   <aside id="sidebar-wrapper">
     <div class="sidebar-brand">
-      <a href="index.html">ROOMING</a>
+      <a href="{{ route('index') }}">ROOMING</a>
     </div>
     <div class="sidebar-brand sidebar-brand-sm">
-      <a href="index.html">RM</a>
+      <a href="{{ route('index') }}">RM</a>
     </div>
     <ul class="sidebar-menu">
       @if (Auth::user()->role == 'USER')
