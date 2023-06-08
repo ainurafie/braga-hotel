@@ -150,18 +150,10 @@
                         <div class="image">
                             <span class="price">{{ $item->price }}</span>
                             <img src="{{ asset('storage/' . $item->photo) }}" alt="">
-                            <a href="#" class="fas fa-shopping-cart"></a>
                         </div>
                         <div class="content">
                             <h3>{{ $item->name }}</h3>
                             <p>{{ $item->description }}</p>
-                            <div class="stars">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star-half-alt"></i>
-                            </div>
                             <a href="#" class="btn">book now</a>
                         </div>
                     </div>
@@ -309,6 +301,11 @@
                     <p>check out <span>*</span></p>
                     <input type="date" class="input">
                 </div>
+                
+                <div class="box">
+                    <p>Duration <span>*</span></p>
+                    <input type="text" class="input" disabled>
+                </div>
 
                 <div class="box">
                     <p>adults <span>*</span></p>
@@ -323,30 +320,6 @@
                 </div>
 
                 <div class="box">
-                    <p>children <span>*</span></p>
-                    <select name="child" class="input">
-                        <option value="1">1 child</option>
-                        <option value="2">2 child</option>
-                        <option value="3">3 child</option>
-                        <option value="4">4 child</option>
-                        <option value="5">5 child</option>
-                        <option value="6">6 child</option>
-                    </select>
-                </div>
-
-                <div class="box">
-                    <p>rooms <span>*</span></p>
-                    <select name="rooms" class="input">
-                        <option value="1">1 rooms</option>
-                        <option value="2">2 rooms</option>
-                        <option value="3">3 rooms</option>
-                        <option value="4">4 rooms</option>
-                        <option value="5">5 rooms</option>
-                        <option value="6">6 rooms</option>
-                    </select>
-                </div>
-
-                <div class="box">
                     <p>room type <span>*</span></p>
                     <select name="type" class="input">
                         <option value="1">exclusive rooms</option>
@@ -354,6 +327,9 @@
                         <option value="3">daily rooms</option>
                         <option value="4">panoramic rooms</option>
                     </select>
+                </div>
+                <div class="box">
+                  
                 </div>
 
             </div>

@@ -59,17 +59,6 @@
                     </select>
                 </div>
 
-                <div class="box">
-                    <p>rooms <span>*</span></p>
-                    <select name="rooms" class="input">
-                        <option value="1">1 rooms</option>
-                        <option value="2">2 rooms</option>
-                        <option value="3">3 rooms</option>
-                        <option value="4">4 rooms</option>
-                        <option value="5">5 rooms</option>
-                        <option value="6">6 rooms</option>
-                    </select>
-                </div>
 
                 <div class="box">
                     <p>room type <span>*</span></p>

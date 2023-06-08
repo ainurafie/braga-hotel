@@ -44,14 +44,14 @@
                     {{ __('Login') }}
                   </button>
                 </div>
+                <a href="{{ route('register') }}" class="btn btn-primary btn-lg btn-block" tabindex="4">
+                  {{ __('Register now') }}
+                </a>
               </form>
               
             </div>
           </div>
 
-          <a href="{{ route('register') }}" class="btn btn-primary btn-lg btn-block" tabindex="4">
-            {{ __('Register now') }}
-          </a>
           
           <div class="simple-footer">
             Copyright &copy; Braga Hotel 2023 - Present. <br>
