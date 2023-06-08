@@ -107,8 +107,9 @@
                 @isset($category)
                     @slot('select_content')
                         <option value="">Pilih Kategori</option>
-                        @foreach ($category as $item)
-                            <option value="{{ $item->id }}" @if (isset($category_id) && $category_id == $item->id) selected @endif>{{ $item->name }}</option>
+                        @foreach ($category as $itemCategory)
+                            <option value="{{ $itemCategory->id }}" @if (isset($item->category_id) && $item->category_id == $itemCategory->id) selected @endif>{{ $itemCategory->name }}
+                            </option>
                         @endforeach
                     @endslot
                 @endisset
@@ -167,13 +168,21 @@
 
 @push('after-script')
     <script>
+        // Mendapatkan input field dengan id 'price-input'
         const priceInput = document.getElementById('price-input');
 
+        // Format rupiah dengan tanda "." setiap 3 digit
         priceInput.addEventListener('input', function(e) {
+            // Mengambil nilai input field
             let value = e.target.value;
 
+            // Hilangkan semua karakter kecuali angka
             value = value.replace(/\D/g, '');
 
+            // Format angka dengan tanda "." setiap 3 digit
+            value = value.replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.');
+
+            // Assign kembali nilai yang sudah diformat ke input field
             e.target.value = value;
         });
     </script>

@@ -13,13 +13,14 @@ use DataTables;
 
 class RoomController extends Controller
 {
-    public function json(){
+    public function json()
+    {
         $data = Room::with('categories')->get();
 
 
         return DataTables::of($data)
-        ->addIndexColumn()
-        ->make(true);
+            ->addIndexColumn()
+            ->make(true);
     }
 
     /**
@@ -54,23 +55,26 @@ class RoomController extends Controller
     {
         $data = $request->all();
 
+        // Format harga
+        $price = str_replace(['.', ','], '', $data['price']);
+        $formattedPrice = number_format((float) $price, 2, '.', '');
+        $data['price'] = $formattedPrice;
 
-        if(isset($data['photo'])){
-            $data['photo']          = $request->file('photo')->store(
-                'assets/image/room', 'public'
-            );
+        if ($request->hasFile('photo')) {
+            $data['photo'] = $request->file('photo')->store('assets/image/room', 'public');
         }
 
-        $create_room = Room::create($data);
-        
-        if($create_room) {
-            $request->session()->flash('alert-success', 'Ruang '.$data['name'].' berhasil ditambahkan');
+        $createRoom = Room::create($data);
+
+        if ($createRoom) {
+            $request->session()->flash('alert-success', 'Ruang ' . $data['name'] . ' berhasil ditambahkan');
         } else {
-            $request->session()->flash('alert-failed', 'Ruang '.$data['name'].' gagal ditambahkan');
+            $request->session()->flash('alert-failed', 'Ruang ' . $data['name'] . ' gagal ditambahkan');
         }
 
         return redirect()->route('room.index');
     }
+
 
     /**
      * Display the specified resource.
@@ -92,9 +96,12 @@ class RoomController extends Controller
     public function edit($id)
     {
         $item = Room::findOrFail($id);
+        $category = RoomCategory::all();
+
 
         return view('pages.admin.room.edit_or_create', [
-            'item'  => $item 
+            'item'  => $item,
+            'category'  => $category,
         ]);
     }
 
@@ -109,20 +116,25 @@ class RoomController extends Controller
     {
         $data = $request->all();
 
-        if(isset($data['photo'])){
+        $price = str_replace(['.', ','], '', $data['price']);
+        $formattedPrice = number_format((float) $price, 2, '.', '');
+        $data['price'] = $formattedPrice;
+
+        if (isset($data['photo'])) {
             $data['photo']          = $request->file('photo')->store(
-                'assets/image/room', 'public'
+                'assets/image/room',
+                'public'
             );
         }
 
         $item = Room::findOrFail($id);
 
-        if($item->update($data)) {
-            $request->session()->flash('alert-success', 'Ruang '.$item->name.' berhasil diupdate');
+        if ($item->update($data)) {
+            $request->session()->flash('alert-success', 'Ruang ' . $item->name . ' berhasil diupdate');
         } else {
-            $request->session()->flash('alert-failed', 'Ruang '.$item->name.' gagal diupdate');
+            $request->session()->flash('alert-failed', 'Ruang ' . $item->name . ' gagal diupdate');
         }
-        
+
         return redirect()->route('room.index');
     }
 
@@ -135,11 +147,11 @@ class RoomController extends Controller
     public function destroy($id)
     {
         $item = Room::findOrFail($id);
-        
-        if($item->delete()) {
-            session()->flash('alert-success', 'Ruang '.$item->name.' berhasil dihapus!');
+
+        if ($item->delete()) {
+            session()->flash('alert-success', 'Ruang ' . $item->name . ' berhasil dihapus!');
         } else {
-            session()->flash('alert-failed', 'Ruang '.$item->name.' gagal dihapus');
+            session()->flash('alert-failed', 'Ruang ' . $item->name . ' gagal dihapus');
         }
 
         return redirect()->route('room.index');
