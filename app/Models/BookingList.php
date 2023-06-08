@@ -18,10 +18,13 @@ class BookingList extends Model
     protected $fillable = [
         'room_id',
         'user_id',
-        'date',
+        'start_date',
+        'end_date',
+        'duration',
         'start_time',
         'end_time',
         'purpose',
+        'total_price',
         'status'
     ];
 

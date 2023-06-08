@@ -30,9 +30,8 @@
         <th>#</th>
         <th>Foto</th>
         <th>Ruangan</th>
-        <th>Tanggal</th>
-        <th>Waktu Mulai</th>
-        <th>Waktu Selesai</th>
+        <th>Tanggal Mulai</th>
+        <th>Tanggal Selesai</th>
         <th>Keperluan</th> 
         <th>Status</th> 
       </tr>
@@ -122,16 +121,12 @@
         }
       },
       {
-        name: 'date',
-        data: 'date',
+        name: 'start_date',
+        data: 'start_date',
       },
       {
-        name: 'start_time',
-        data: 'start_time',
-      },
-      {
-        name: 'end_time',
-        data: 'end_time',
+        name: 'end_date',
+        data: 'end_date',
       },
       {
         name: 'purpose',
@@ -173,7 +168,7 @@
 
       $('.modal-title').html(title);
       $('.modal-body').html(body);
-      $('#confirm-form').attr('action', '/my-booking-list/'+id+'/cancel');
+      $('#confirm-form').attr('action', "{{ route('my-booking-list.cancel', ['id' => ':id']) }}".replace(':id', id));
       $('#confirm-form').attr('method', 'POST');
       $('#submit-btn').attr('class', submit_btn_class);
       $('#lara-method').attr('value', 'put');

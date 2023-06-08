@@ -17,10 +17,10 @@ class CreateBookingListsTable extends Migration
             $table->id();
             $table->integer('room_id');
             $table->integer('user_id');
-            $table->date('date'); 
-            $table->time('start_time');
-            $table->time('end_time');
-            $table->string('purpose', 100);
+            $table->date('start_date'); 
+            // $table->time('start_time');
+            // $table->time('end_time');
+            $table->string('purpose', 100)->nullable();
             $table->enum('status', array('PENDING', 'DISETUJUI', 'DIGUNAKAN', 'DITOLAK', 'EXPIRED', 'BATAL', 'SELESAI'))->default('PENDING');
             $table->softDeletes();
             $table->timestamps();
