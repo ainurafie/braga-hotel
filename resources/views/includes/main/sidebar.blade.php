@@ -46,6 +46,11 @@
             <i class="fas fa-door-open"></i> <span>Ruangan</span>
           </a>
         </li>
+        <li class="{{ request()->is('admin/category*') ? 'active' : '' }}">
+          <a class="nav-link" href="{{ route('category.index') }}">
+            <i class="fas fa-door-open"></i> <span>Kategori</span>
+          </a>
+        </li>
         <li class="{{ request()->is('admin/user*') ? 'active' : '' }}">
           <a class="nav-link" href="{{ route('user.index') }}">
             <i class="fas fa-user"></i> <span>User</span>

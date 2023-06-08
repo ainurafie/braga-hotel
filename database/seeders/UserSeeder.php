@@ -33,6 +33,16 @@ class UserSeeder extends Seeder
             'email'      => 'user@user.com',
         ]);
 
+        User::create([
+            'id'            => 3,
+            'name'          => 'Nafi',
+            'username'      => 'nafi',
+            'password'      => bcrypt('nafi12345'),
+            'description'   => 'Programmer',
+            'role'          => 'USER',
+            'email'      => 'nafiilham008@gmail.com',
+        ]);
+
         
     }
 }

@@ -22,8 +22,8 @@ class SendEmail implements ShouldQueue
     public $user_name;
     public $room_name;
     public $date;
-    public $start_time;
-    public $end_time;
+    public $start_date;
+    public $end_date;
     public $purpose;
     public $to_role;
     public $receiver_name;
@@ -38,10 +38,9 @@ class SendEmail implements ShouldQueue
     public function __construct(
         $receiver_email, 
         $user_name, 
-        $room_name, 
-        $date, 
-        $start_time, 
-        $end_time, 
+        $room_name,
+        $start_date, 
+        $end_date, 
         $purpose, 
         $to_role, 
         $receiver_name, 
@@ -52,9 +51,8 @@ class SendEmail implements ShouldQueue
         $this->receiver_email   = $receiver_email;
         $this->user_name        = $user_name;
         $this->room_name        = $room_name;
-        $this->date             = $date;
-        $this->start_time       = $start_time;
-        $this->end_time         = $end_time;
+        $this->start_date       = $start_date;
+        $this->end_date         = $end_date;
         $this->purpose          = $purpose;
         $this->to_role          = $to_role;
         $this->receiver_name    = $receiver_name;
@@ -72,10 +70,9 @@ class SendEmail implements ShouldQueue
         Mail::to($this->receiver_email)
             ->send(new BookingMail(
                 $this->user_name, 
-                $this->room_name, 
-                $this->date, 
-                $this->start_time,
-                $this->end_time, 
+                $this->room_name,  
+                $this->start_date,
+                $this->end_date, 
                 $this->purpose, 
                 $this->to_role, 
                 $this->receiver_name, 

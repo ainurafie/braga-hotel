@@ -13,9 +13,8 @@ class BookingMail extends Mailable
 
     public $user_name;
     public $room_name;
-    public $date;
-    public $start_time;
-    public $end_time;
+    public $start_date;
+    public $end_date;
     public $purpose;
     public $to_role;
     public $receiver_name;
@@ -27,13 +26,12 @@ class BookingMail extends Mailable
      *
      * @return void
      */
-    public function __construct($user_name, $room_name, $date, $start_time, $end_time, $purpose, $to_role, $receiver_name, $url, $status)
+    public function __construct($user_name, $room_name, $start_date, $end_date, $purpose, $to_role, $receiver_name, $url, $status)
     {
         $this->user_name        = $user_name;
         $this->room_name        = $room_name;
-        $this->date             = $date;
-        $this->start_time       = $start_time;
-        $this->end_time         = $end_time;
+        $this->start_date       = $start_date;
+        $this->end_date         = $end_date;
         $this->purpose          = $purpose;
         $this->to_role          = $to_role;
         $this->receiver_name    = $receiver_name;

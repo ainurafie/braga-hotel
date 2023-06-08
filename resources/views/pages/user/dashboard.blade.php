@@ -12,20 +12,20 @@
 @section('content')
 <div class="row">
 
-  <div class="col-lg-3 col-md-6 col-sm-6 col-12">    
+  {{-- <div class="col-lg-3 col-md-6 col-sm-6 col-12">    
     @component('components.statistic-card')
       @slot('bg_color', 'bg-primary')
       @slot('icon', 'fas fa-calendar')
       @slot('title', 'Book Hari Ini')
       @slot('value', $booking_today)
     @endcomponent
-  </div>
+  </div> --}}
 
   <div class="col-lg-3 col-md-6 col-sm-6 col-12">
     @component('components.statistic-card')
       @slot('bg_color', 'bg-success')
       @slot('icon', 'fas fa-calendar-alt')
-      @slot('title', 'Book Semua')
+      @slot('title', 'Book saya')
       @slot('value', $booking_lifetime)
     @endcomponent
   </div>
@@ -39,7 +39,7 @@
   @slot('card_header', 'true')
   @slot('card_header_content')
     <h4>
-      Booking hari ini
+      Booking saya
     </h4>
     <small>
       Diambil dari 3 data teratas.
@@ -55,9 +55,8 @@
       <th>#</th>
       <th>Foto</th>
       <th>Ruangan</th>
-      <th>Tanggal</th>
-      <th>Waktu Mulai</th>
-      <th>Waktu Selesai</th>
+      <th>Tanggal Mulai</th>
+      <th>Tanggal Selesai</th>
       <th>Keperluan</th>
       <th>Status</th>
     </tr>
@@ -104,16 +103,12 @@
         data: 'room.name',
       },
       {
-        name: 'date',
-        data: 'date',
+        name: 'start_date',
+        data: 'start_date',
       },
       {
-        name: 'start_time',
-        data: 'start_time',
-      },
-      {
-        name: 'end_time',
-        data: 'end_time',
+        name: 'end_date',
+        data: 'end_date',
       },
       {
         name: 'purpose',
