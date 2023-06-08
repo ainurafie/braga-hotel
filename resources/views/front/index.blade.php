@@ -301,7 +301,7 @@
                     <p>check out <span>*</span></p>
                     <input type="date" class="input">
                 </div>
-                
+
                 <div class="box">
                     <p>Duration <span>*</span></p>
                     <input type="text" class="input" disabled>
@@ -329,7 +329,7 @@
                     </select>
                 </div>
                 <div class="box">
-                  
+
                 </div>
 
             </div>
@@ -339,6 +339,24 @@
         </form>
 
     </section>
-
+    <section>
+        <h1 class="heading">Event</h1>
+        <div class="flex gap-8 items-center">
+            <div class="w-1/2">
+                <h1 class="text-[64px] text-blue-500 font-semibold  ">"Music</h1>
+                <h1 class="text-[48px] text-blue-500 font-medium mb-5">heals<br> everything.”</h1>
+                <h1 class="text-[32px] text-blue-500 font-medium">While enjoying music, you can capture the moment. You won't miss a single moment with us”</h1>
+                <button class="btn mt-20">Join Now</button>
+            </div>
+            <div class="">
+                <img src="../assets/images/gallery1.jpg" alt="" class="w-[300px] h-[300px] rounded-xl mb-10">
+                <img src="../assets/images/gallery1.jpg" alt="" class="w-[300px] h-[300px] rounded-xl">
+            </div>
+            <div class="">
+                <img src="../assets/images/gallery1.jpg" alt="" class="w-[300px] h-[300px] rounded-xl mb-10">
+                <img src="../assets/images/gallery1.jpg" alt="" class="w-[300px] h-[300px] rounded-xl">
+            </div>
+        </div>
+    </section>
     <!-- end -->
 @endsection
