@@ -1,7 +1,7 @@
 <div class="main-sidebar">
   <aside id="sidebar-wrapper">
     <div class="sidebar-brand">
-      <a href="{{ route('index') }}">ROOMING</a>
+      <a href="{{ route('index') }}">Braga Hotel</a>
     </div>
     <div class="sidebar-brand sidebar-brand-sm">
       <a href="{{ route('index') }}">RM</a>

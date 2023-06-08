@@ -165,11 +165,8 @@
                             <a href="#" class="btn">book now</a>
                         </div>
                     </div>
-
-
-
+                @endforeach
             </div>
-            @endforeach
             <div class="swiper-pagination"></div>
 
         </div>

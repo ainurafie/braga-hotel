@@ -14,7 +14,7 @@ class AddColumnPriceToTableRooms extends Migration
     public function up()
     {
         Schema::table('rooms', function (Blueprint $table) {
-            $table->decimal('price', 10, 2)->after('capacity')->nullable(); 
+            $table->decimal('price', 10, 2)->after('capacity'); 
         });
     }
 

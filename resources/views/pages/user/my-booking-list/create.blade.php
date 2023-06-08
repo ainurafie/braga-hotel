@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('title')
-  Buat Booking - ROOMING
+  Buat Booking - Braga Hotel
 @endsection 
 
 @section('header-title')

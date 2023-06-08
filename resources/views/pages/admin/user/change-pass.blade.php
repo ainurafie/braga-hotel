@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('title')
-  Ganti Password User - ROOMING
+  Ganti Password User - Braga Hotel
 @endsection 
 
 @section('header-title')

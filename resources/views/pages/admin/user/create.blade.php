@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('title')
-Tambah Data User - ROOMING
+Tambah Data User - Braga Hotel
 @endsection 
 
 @section('header-title')

@@ -21,6 +21,7 @@ class Room extends Model
         'capacity',
         'price',
         'photo',
+        'category_id',
     ];
 
     /**
@@ -34,5 +35,10 @@ class Room extends Model
 
     public function booking_list(){
         return $this->belongsTo(BookingList::class, 'id', 'user_id');
+    }
+
+    public function categories()
+    {
+        return $this->belongsTo(RoomCategory::class, 'category_id', 'id');
     }
 }

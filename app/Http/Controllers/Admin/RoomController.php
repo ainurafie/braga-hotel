@@ -8,13 +8,14 @@ use Illuminate\Http\Request;
 use App\Models\Room;
 
 use App\Http\Requests\Admin\RoomRequest;
-
+use App\Models\RoomCategory;
 use DataTables;
 
 class RoomController extends Controller
 {
     public function json(){
-        $data = Room::all();
+        $data = Room::with('categories')->get();
+
 
         return DataTables::of($data)
         ->addIndexColumn()
@@ -38,7 +39,9 @@ class RoomController extends Controller
      */
     public function create()
     {
-        return view('pages.admin.room.edit_or_create');
+        $category = RoomCategory::all();
+
+        return view('pages.admin.room.edit_or_create', compact('category'));
     }
 
     /**
@@ -51,7 +54,6 @@ class RoomController extends Controller
     {
         $data = $request->all();
 
-        // dd($data);
 
         if(isset($data['photo'])){
             $data['photo']          = $request->file('photo')->store(

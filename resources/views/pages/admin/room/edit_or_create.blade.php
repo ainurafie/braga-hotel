@@ -2,9 +2,9 @@
 
 @section('title')
     @if (isset($item))
-        Edit Data Ruangan - ROOMING
+        Edit Data Ruangan - Braga Hotel
     @else
-        Tambah Data Ruangan - ROOMING
+        Tambah Data Ruangan - Braga Hotel
     @endif
 @endsection
 
@@ -101,6 +101,24 @@
             @endcomponent
 
             @component('components.input-field')
+                @slot('input_label', 'Kategori')
+                @slot('input_type', 'select')
+                @slot('input_name', 'category_id')
+                @isset($category)
+                    @slot('select_content')
+                        <option value="">Pilih Kategori</option>
+                        @foreach ($category as $item)
+                            <option value="{{ $item->id }}" @if (isset($category_id) && $category_id == $item->id) selected @endif>{{ $item->name }}</option>
+                        @endforeach
+                    @endslot
+                @endisset
+                @error('category_id')
+                    @include('includes.error-field', ['error' => $message])
+                @enderror
+            @endcomponent
+
+
+            @component('components.input-field')
                 @slot('input_label', 'Kapasitas')
                 @slot('input_type', 'number')
                 @slot('input_name', 'capacity')
@@ -123,6 +141,7 @@
                 @endisset
             @endcomponent
 
+
             @component('components.input-field')
                 @slot('input_label', 'Foto')
                 @slot('input_type', 'file')
@@ -130,6 +149,9 @@
                 @isset($item)
                     @slot('help_text', 'Tidak perlu input foto jika tidak ingin mengeditnya')
                 @endisset
+                @slot('input_attributes')
+                    accept="image/*"
+                @endslot
             @endcomponent
 
         @endslot
@@ -145,21 +167,13 @@
 
 @push('after-script')
     <script>
-        // Mendapatkan input field dengan id 'price-input'
         const priceInput = document.getElementById('price-input');
 
-        // Format rupiah dengan tanda "." setiap 3 digit
         priceInput.addEventListener('input', function(e) {
-            // Mengambil nilai input field
             let value = e.target.value;
 
-            // Hilangkan semua karakter kecuali angka
             value = value.replace(/\D/g, '');
 
-            // Format angka dengan tanda "." setiap 3 digit
-            value = value.replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.');
-
-            // Assign kembali nilai yang sudah diformat ke input field
             e.target.value = value;
         });
     </script>

@@ -1,18 +1,18 @@
 @extends('layouts.main')
 
-@section('title', 'Data Ruangan - Braga Hotel')
+@section('title', 'Data Kategori - Braga Hotel')
 
-@section('header-title', 'Data Ruangan')
+@section('header-title', 'Data Kategori')
     
 @section('breadcrumbs')
-  <div class="breadcrumb-item"><a href="#">Ruangan</a></div>
-  <div class="breadcrumb-item active">Data Ruangan</div>
+  <div class="breadcrumb-item"><a href="#">Kategori</a></div>
+  <div class="breadcrumb-item active">Data Kategori</div>
 @endsection
 
-@section('section-title', 'Ruangan')
+@section('section-title', 'Kategori')
     
 @section('section-lead')
-  Berikut ini adalah daftar seluruh ruangan.
+  Berikut ini adalah daftar seluruh kategori.
 @endsection
 
 @section('content')
@@ -20,20 +20,15 @@
   @component('components.datatables')
 
     @slot('buttons')
-      <a href="{{ route('room.create') }}" class="btn btn-primary"><i class="fas fa-plus"></i>&nbsp;Tambah Ruangan</a>
+      <a href="{{ route('category.create') }}" class="btn btn-primary"><i class="fas fa-plus"></i>&nbsp;Tambah Kategori</a>
     @endslot
     
-    @slot('table_id', 'room-table')
+    @slot('table_id', 'category-table')
 
     @slot('table_header')
       <tr>
         <th>#</th>
-        <th>Foto</th>
-        <th>Nama</th>
-        <th>Deskripsi</th>
-        <th>Kapasitas</th>
-        <th>Harga</th>
-        <th>Kategori</th>
+        <th>Kategori Ruangan</th>
       </tr>
     @endslot
       
@@ -45,34 +40,17 @@
 
   <script>
   $(document).ready(function() {
-    $('#room-table').DataTable({
+    $('#category-table').DataTable({
       processing: true,
       serverSide: true,
-      ajax: '{{ route('room.json') }}',
-      order: [2, 'asc'],
+      ajax: '{{ route('category.json') }}',
+      order: [1, 'asc'],
       columns: [
       {
         name: 'DT_RowIndex',
         data: 'DT_RowIndex',
         orderable: false, 
         searchable: false
-      },
-      {
-        name: 'photo',
-        data: 'photo',
-        orderable: false, 
-        searchable: false,
-        render: function ( data, type, row ) {
-          if(data != null) {
-            return `<div class="gallery gallery-fw">`
-              + `<a href="{{ asset('storage/${data}') }}" data-toggle="lightbox">`
-                + `<img src="{{ asset('storage/${data}') }}" class="img-fluid" style="min-width: 80px; height: auto;">`
-              + `</a>`
-            + '</div>';
-          } else {
-            return '-'
-          }
-        }
       },
       {
         name: 'name',
@@ -88,7 +66,7 @@
             result += '<div class="table-links">';
           }
 
-          result += '<a href="room/'+row.id+'/edit"'
+          result += '<a href="category/'+row.id+'/edit"'
           + ' class="text-primary">Edit</a>'
 
           + ' <div class="bullet"></div>'
@@ -106,22 +84,6 @@
             
         }
       },
-      {
-        name: 'description',
-        data: 'description',
-      },
-      {
-        name: 'capacity',
-        data: 'capacity',
-      },
-      {
-        name: 'price',
-        data: 'price',
-      },
-      {
-        name: 'category_id',
-        data: 'categories.name',
-      },
     ],
     });
   
@@ -133,7 +95,7 @@
 
       $('.modal-title').html(title);
       $('.modal-body').html(body);
-      $('#confirm-form').attr('action', 'room/'+id);
+      $('#confirm-form').attr('action', 'category/'+id);
       $('#confirm-form').attr('method', 'POST');
       $('#submit-btn').attr('class', 'btn btn-danger');
       $('#lara-method').attr('value', 'delete');

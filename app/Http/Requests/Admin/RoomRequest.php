@@ -29,6 +29,7 @@ class RoomRequest extends FormRequest
             'capacity'          => 'nullable|numeric|lt:100000',
             'price'             => 'nullable|numeric|gt:0',
             'photo'             => 'nullable|image|max:2048',
+            'category_id'       => 'required|exists:room_categories,id',
         ];
     }
 }

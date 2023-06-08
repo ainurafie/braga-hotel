@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title', 'Ganti Password - ROOMING')
+@section('title', 'Ganti Password - Braga Hotel')
 
 @section('header-title', 'Ganti Password')
     

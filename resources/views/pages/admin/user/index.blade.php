@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title', 'Data User - ROOMING')
+@section('title', 'Data User - Braga Hotel')
 
 @section('header-title', 'Data User')
     
