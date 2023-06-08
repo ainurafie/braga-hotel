@@ -19,6 +19,10 @@ class CreateRoomsTable extends Migration
             $table->string('description', 100)->nullable();
             $table->integer('capacity')->nullable();
             $table->string('photo')->nullable();
+
+            $table->unsignedBigInteger('category_id')->nullable();
+            $table->foreign('category_id')->references('id')->on('room_categories');
+
             $table->softDeletes();
             $table->timestamps();
         });

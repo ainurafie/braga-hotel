@@ -13,6 +13,7 @@ use App\Http\Controllers\Admin\BookingListController;
 
 use App\Http\Controllers\ChangePassController;
 use App\Http\Controllers\Front\LandingController;
+use App\Http\Controllers\RoomCategoryController;
 use Illuminate\Support\Facades\Auth;
 
 // use Illuminate\Support\Facades\Mail;
@@ -34,7 +35,7 @@ Route::get('/detail', [LandingController::class, 'detail'])->name('index.detail'
 Route::get('/booking', function () {
     return view('front/booking');
 });
-Auth::routes(['register' => false, 'reset' => false, 'verify' => false]);
+Auth::routes(['reset' => false, 'verify' => false]);
 
 Route::prefix('dashboard')
     ->get('/', [UserDashboardController::class, 'index'])
@@ -98,6 +99,9 @@ Route::prefix('admin')
         Route::get('/room/json', [RoomController::class, 'json'])
         ->name('room.json');
 
+        Route::get('/category/json', [RoomCategoryController::class, 'json'])
+        ->name('category.json');
+
         Route::get('/booking-list/json', [BookingListController::class, 'json'])
         ->name('booking-list.json');
 
@@ -110,6 +114,7 @@ Route::prefix('admin')
         Route::resources([
             'user'          => UserController::class,
             'room'          => RoomController::class,
+            'category'          => RoomCategoryController::class,
         ]);
     });
 
