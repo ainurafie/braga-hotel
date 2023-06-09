@@ -12,12 +12,12 @@
         <li class="menu-header">Dashboard</li>
         <li><a class="nav-link" href="{{ route('user.dashboard') }}"><i class="fas fa-fire"></i> <span>Dashboard</span></a></li>
 
-        <li class="menu-header">RUANGAN</li>
+        {{-- <li class="menu-header">RUANGAN</li>
         <li class="{{ request()->is('room*') ? 'active' : '' }}">
           <a class="nav-link" href="{{ route('room-list.index') }}">
             <i class="fas fa-door-open"></i> <span>List Ruangan</span>
           </a>
-        </li>
+        </li> --}}
 
         <li class="menu-header">TRANSAKSI</li>
         <li class="{{ request()->is('my-booking-list*') ? 'active' : '' }}">
@@ -49,6 +49,11 @@
         <li class="{{ request()->is('admin/category*') ? 'active' : '' }}">
           <a class="nav-link" href="{{ route('category.index') }}">
             <i class="fas fa-door-open"></i> <span>Kategori</span>
+          </a>
+        </li>
+        <li class="{{ request()->is('admin/events*') ? 'active' : '' }}">
+          <a class="nav-link" href="{{ route('events.index') }}">
+            <i class="fas fa-door-open"></i> <span>Event</span>
           </a>
         </li>
         <li class="{{ request()->is('admin/user*') ? 'active' : '' }}">
