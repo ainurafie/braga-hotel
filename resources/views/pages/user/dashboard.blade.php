@@ -46,9 +46,9 @@
     </small>
   @endslot
 
-  @slot('buttons')
+  {{-- @slot('buttons')
     <a href="{{ route('my-booking-list.create') }}" class="btn btn-primary"><i class="fas fa-plus"></i>&nbsp;Booking</a>
-  @endslot
+  @endslot --}}
 
   @slot('table_header')
     <tr>

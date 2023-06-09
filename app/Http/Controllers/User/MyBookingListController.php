@@ -47,14 +47,14 @@ class MyBookingListController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        $rooms = Room::orderBy('name')->get();
+    // public function create()
+    // {
+    //     $rooms = Room::orderBy('name')->get();
 
-        return view('pages.user.my-booking-list.create', [
-            'rooms' => $rooms,
-        ]);
-    }
+    //     return view('pages.user.my-booking-list.create', [
+    //         'rooms' => $rooms,
+    //     ]);
+    // }
 
     /**
      * Store a newly created resource in storage.

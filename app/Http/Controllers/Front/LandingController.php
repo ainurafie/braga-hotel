@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
+use App\Models\Event;
 use App\Models\Room;
 use App\Models\RoomCategory;
 use Illuminate\Http\Request;
@@ -15,7 +16,9 @@ class LandingController extends Controller
 
         $category = RoomCategory::all();
 
-        return view('front.index', compact('room', 'category'));
+        $event = Event::orderBy('updated_at', 'desc')->paginate(4);
+
+        return view('front.index', compact('room', 'category', 'event'));
     }
 
     public function checkRoom(Request $request)
