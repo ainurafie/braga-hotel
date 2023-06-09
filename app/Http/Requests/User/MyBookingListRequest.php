@@ -34,6 +34,8 @@ class MyBookingListRequest extends FormRequest
             'total_price' => 'required|numeric|min:0',
         ];
 
+        // dd($rules);
+
         return $rules;
     }
 }

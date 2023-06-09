@@ -54,56 +54,45 @@
 
     <section class="availability">
 
-        <form action="">
+        <form action="{{ route('index.check.room') }}" method="GET">
 
             <div class="box">
                 <p>check in <span>*</span></p>
-                <input type="date" class="input">
+                <input type="date" class="input" name="start_date">
             </div>
 
             <div class="box">
                 <p>check out <span>*</span></p>
-                <input type="date" class="input">
+                <input type="date" class="input" name="end_date">
             </div>
 
             <div class="box">
-                <p>adults <span>*</span></p>
-                <select name="adults" id="" class="input">
-                    <option value="1">1 adults</option>
-                    <option value="2">2 adults</option>
-                    <option value="3">3 adults</option>
-                    <option value="4">4 adults</option>
-                    <option value="5">5 adults</option>
-                    <option value="6">6 adults</option>
-                </select>
-            </div>
-
-            <div class="box">
-                <p>children <span>*</span></p>
-                <select name="child" id="" class="input">
-                    <option value="1">1 child</option>
-                    <option value="2">2 child</option>
-                    <option value="3">3 child</option>
-                    <option value="4">4 child</option>
-                    <option value="5">5 child</option>
-                    <option value="6">6 child</option>
+                <p>capacity <span>*</span></p>
+                <select name="capacity" id="" class="input">
+                    <option value="1">1 person</option>
+                    <option value="2">2 person</option>
+                    <option value="3">3 person</option>
+                    <option value="4">4 person</option>
+                    <option value="5">5 person</option>
+                    <option value="6">6 person</option>
+                    <option value="7">7 person</option>
+                    <option value="8">8 person</option>
                 </select>
             </div>
 
             <div class="box">
                 <p>rooms <span>*</span></p>
-                <select name="rooms" id="" class="input">
-                    <option value="1">1 rooms</option>
-                    <option value="2">2 rooms</option>
-                    <option value="3">3 rooms</option>
-                    <option value="4">4 rooms</option>
-                    <option value="5">5 rooms</option>
-                    <option value="6">6 rooms</option>
+                <select name="category_id" id="" class="input">
+                    <option value="">Pilih Kategori</option>
+                    @foreach ($category as $itemCategory)
+                        <option value="{{ $itemCategory->id }}" @if (isset($item->category_id) && $item->category_id == $itemCategory->id) selected @endif>
+                            {{ $itemCategory->name }}
+                        </option>
+                    @endforeach
                 </select>
             </div>
 
-            <input type="submit" value="check availability" class="btn">
-
+            <button type="submit">Check Avalibility</button>
         </form>
 
     </section>
@@ -272,80 +261,15 @@
 
 
 
-    <!-- reservation -->
-
-    <section class="reservation" id="reservation">
-
-        <h1 class="heading">book now</h1>
-
-        <form action="">
-
-            <div class="container">
-
-                <div class="box">
-                    <p>name <span>*</span></p>
-                    <input type="text" class="input" placeholder="Your Name">
-                </div>
-
-                <div class="box">
-                    <p>email <span>*</span></p>
-                    <input type="text" class="input" placeholder="Your Email">
-                </div>
-
-                <div class="box">
-                    <p>check in <span>*</span></p>
-                    <input type="date" class="input">
-                </div>
-
-                <div class="box">
-                    <p>check out <span>*</span></p>
-                    <input type="date" class="input">
-                </div>
-
-                <div class="box">
-                    <p>Duration <span>*</span></p>
-                    <input type="text" class="input" disabled>
-                </div>
-
-                <div class="box">
-                    <p>adults <span>*</span></p>
-                    <select name="adults" class="input">
-                        <option value="1">1 adults</option>
-                        <option value="2">2 adults</option>
-                        <option value="3">3 adults</option>
-                        <option value="4">4 adults</option>
-                        <option value="5">5 adults</option>
-                        <option value="6">6 adults</option>
-                    </select>
-                </div>
-
-                <div class="box">
-                    <p>room type <span>*</span></p>
-                    <select name="type" class="input">
-                        <option value="1">exclusive rooms</option>
-                        <option value="2">family rooms</option>
-                        <option value="3">daily rooms</option>
-                        <option value="4">panoramic rooms</option>
-                    </select>
-                </div>
-                <div class="box">
-
-                </div>
-
-            </div>
-
-            <input type="submit" value="check availability" class="btn">
-
-        </form>
-
-    </section>
+    
     <section>
         <h1 class="heading">Event</h1>
         <div class="flex gap-8 items-center">
             <div class="w-1/2">
                 <h1 class="text-[64px] text-blue-500 font-semibold  ">"Music</h1>
                 <h1 class="text-[48px] text-blue-500 font-medium mb-5">heals<br> everything.”</h1>
-                <h1 class="text-[32px] text-blue-500 font-medium">While enjoying music, you can capture the moment. You won't miss a single moment with us”</h1>
+                <h1 class="text-[32px] text-blue-500 font-medium">While enjoying music, you can capture the moment. You
+                    won't miss a single moment with us”</h1>
                 <button class="btn mt-20">Join Now</button>
             </div>
             <div class="">

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
 use App\Models\Room;
+use App\Models\RoomCategory;
 use Illuminate\Http\Request;
 
 class LandingController extends Controller
@@ -12,11 +13,60 @@ class LandingController extends Controller
     {
         $room = Room::all();
 
-        return view('front.index', compact('room'));
+        $category = RoomCategory::all();
+
+        return view('front.index', compact('room', 'category'));
     }
 
-    public function detail()
+    public function checkRoom(Request $request)
     {
-        return view('front.room');
+        $params = $request->capacity;
+        $categoryID = $request->category_id;
+
+        if (empty($params) || empty($categoryID)) {
+            // Jika pencarian kosong
+            $rooms = [];
+        } else {
+            // Jika pencarian ada
+            $validatedData = $request->validate([
+                'capacity' => 'required|min:1',
+                'category_id' => 'required|min:1'
+            ]);
+
+            $rooms = Room::where('capacity', '>=', $validatedData['capacity'])
+                ->where('category_id', $validatedData['category_id'])
+                ->take(3)
+                ->get();
+        }
+
+        $category = RoomCategory::all();
+
+
+        return view('front.room', compact('rooms', 'category'));
     }
+
+    public function bookNow($id)
+    {
+
+        $room = Room::with('categories')->findOrFail($id);
+
+        return view('front.checkout', compact('room'));
+    }
+    
+
+
+
+
+    // public function resultRoom($data)
+    // {
+    //     dd($data);
+    //     $rooms = Room::where('capacity', $data->capacity)
+    //         ->where('category_id', $data->category_id)
+    //         ->get();
+
+    //     $category = RoomCategory::all();
+
+
+    //     return view('front.room', compact('rooms', 'category'));
+    // }
 }

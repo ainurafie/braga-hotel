@@ -65,6 +65,7 @@ class MyBookingListController extends Controller
     public function store(MyBookingListRequest $request)
     {
         $data               = $request->all();
+        // dd($data);
         $data['user_id']    = Auth::user()->id;
         $data['status']     = 'PENDING';
 
@@ -92,24 +93,7 @@ class MyBookingListController extends Controller
         ) {
             if (BookingList::create($data)) {
                 $request->session()->flash('alert-success', 'Booking ruang ' . $room->name . ' berhasil ditambahkan');
-
-                $user_name          = $this->getUserName();
-                $user_email         = $this->getUserEmail();
-
-                $admin      = $this->getAdminData();
-                $status     = 'DIBUAT';
-
-                $to_role    = 'USER';
-
-                // use URL::to('/') for the url value
-
-                // URL::to('/my-booking-list)
-                dispatch(new SendEmail($user_email, $user_name, $room->name, $data['start_date'], $data['end_date'], $data['purpose'], $to_role, $user_name, 'https://google.com', $status));
-
-                $to_role    = 'ADMIN';
-
-                // URL::to('/admin/booking-list)
-                dispatch(new SendEmail($admin->email, $user_name, $room->name, $data['start_date'], $data['end_date'], $data['purpose'], $to_role, $admin->name, 'https://google.com', $status));
+ 
             } else {
                 $request->session()->flash('alert-failed', 'Booking ruang ' . $room->name . ' gagal ditambahkan');
                 return redirect()->route('my-booking-list.create');

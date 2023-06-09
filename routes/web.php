@@ -30,7 +30,7 @@ use Illuminate\Support\Facades\Auth;
 */
 
 Route::get('/', [LandingController::class, 'index'])->name('index');
-Route::get('/detail', [LandingController::class, 'detail'])->name('index.detail');
+Route::get('/check-room', [LandingController::class, 'checkRoom'])->name('index.check.room');
 
 Route::get('/booking', function () {
     return view('front/booking');
@@ -55,61 +55,59 @@ Route::prefix('dashboard')
 
 Route::prefix('user')
     ->middleware(['auth', 'is.user'])
-    ->group(function(){
+    ->group(function () {
         Route::get('/dashboard-booking-list', [UserDashboardController::class, 'dashboard_booking_list'])
-        ->name('dashboard.booking-list');
+            ->name('dashboard.booking-list');
         Route::get('/room/json', [RoomListController::class, 'json'])
-        ->name('room-list.json');
+            ->name('room-list.json');
         Route::get('/room', [RoomListController::class, 'index'])
-        ->name('room-list.index');
+            ->name('room-list.index');
 
         Route::get('/my-booking-list/json', [MyBookingListController::class, 'json'])
-        ->name('my-booking-list.json');
+            ->name('my-booking-list.json');
         Route::get('/my-booking-list', [MyBookingListController::class, 'index'])
-        ->name('my-booking-list.index');
+            ->name('my-booking-list.index');
         Route::get('/my-booking-list/create', [MyBookingListController::class, 'create'])
-        ->name('my-booking-list.create');
+            ->name('my-booking-list.create');
         Route::post('/my-booking-list/store', [MyBookingListController::class, 'store'])
-        ->name('my-booking-list.store');
+            ->name('my-booking-list.store');
         Route::put('/my-booking-list/{id}/cancel', [MyBookingListController::class, 'cancel'])
-        ->name('my-booking-list.cancel');
+            ->name('my-booking-list.cancel');
 
-        // Route::get('/mail', function () {
-        //     Mail::to('fajarwindhuzulfikar@gmail.com')
-        //         ->send(new \App\Mail\BookingMail('Booking Ruangan 3', 'Admin'));
-        //     return 'Terkirim';
-        // });
+        Route::get('/book-now/{id}', [LandingController::class, 'bookNow'])->name('index.check.out');
+
+
     });
 
 Route::prefix('admin')
     ->middleware(['auth', 'is.admin'])
-    ->group(function(){
+    ->group(function () {
         Route::get('/', [AdminDashboardController::class, 'index'])
-        ->name('admin.dashboard');
+            ->name('admin.dashboard');
 
         Route::get('/user/json', [UserController::class, 'json'])
-        ->name('user.json');
+            ->name('user.json');
 
         Route::get('/user/{id}/change-pass', [UserController::class, 'change_pass'])
-        ->name('user.change-pass');
+            ->name('user.change-pass');
 
         Route::put('/user/{id}/update-pass', [UserController::class, 'update_pass'])
-        ->name('user.update-pass');
+            ->name('user.update-pass');
 
         Route::get('/room/json', [RoomController::class, 'json'])
-        ->name('room.json');
+            ->name('room.json');
 
         Route::get('/category/json', [RoomCategoryController::class, 'json'])
-        ->name('category.json');
+            ->name('category.json');
 
         Route::get('/booking-list/json', [BookingListController::class, 'json'])
-        ->name('booking-list.json');
+            ->name('booking-list.json');
 
         Route::get('/booking-list', [BookingListController::class, 'index'])
-        ->name('booking-list.index');
+            ->name('booking-list.index');
 
         Route::put('/booking-list/{id}/update/{value}', [BookingListController::class, 'update'])
-        ->name('booking-list.update');
+            ->name('booking-list.update');
 
         Route::resources([
             'user'          => UserController::class,
@@ -130,12 +128,12 @@ $users = [
 
 foreach ($users as $user) {
     Route::prefix($user)
-    ->middleware(['auth'])
-    ->group(function () use ($user) {
-        if($user == '/') $user = 'user';
-        Route::get('/change-pass', [ChangePassController::class, 'index'])
-        ->name($user.'.change-pass.index');
-        Route::put('/change-pass/update', [ChangePassController::class, 'update'])
-        ->name($user.'.change-pass.update');
-    });
+        ->middleware(['auth'])
+        ->group(function () use ($user) {
+            if ($user == '/') $user = 'user';
+            Route::get('/change-pass', [ChangePassController::class, 'index'])
+                ->name($user . '.change-pass.index');
+            Route::put('/change-pass/update', [ChangePassController::class, 'update'])
+                ->name($user . '.change-pass.update');
+        });
 }
