@@ -10,7 +10,7 @@ use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\RoomController;
 use App\Http\Controllers\Admin\BookingListController;
-
+use App\Http\Controllers\Admin\EventSettingController;
 use App\Http\Controllers\ChangePassController;
 use App\Http\Controllers\Front\LandingController;
 use App\Http\Controllers\RoomCategoryController;
@@ -100,6 +100,9 @@ Route::prefix('admin')
         Route::get('/category/json', [RoomCategoryController::class, 'json'])
             ->name('category.json');
 
+            Route::get('/events/json', [EventSettingController::class, 'json'])
+            ->name('events.json');
+
         Route::get('/booking-list/json', [BookingListController::class, 'json'])
             ->name('booking-list.json');
 
@@ -113,6 +116,7 @@ Route::prefix('admin')
             'user'          => UserController::class,
             'room'          => RoomController::class,
             'category'          => RoomCategoryController::class,
+            'events'          => EventSettingController::class,
         ]);
     });
 
