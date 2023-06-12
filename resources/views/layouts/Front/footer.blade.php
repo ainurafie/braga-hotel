@@ -6,19 +6,16 @@
 
         <div class="box">
             <h3>contact info</h3>
-            <a href="#"> <i class="fas fa-phone"></i> +123-852-4565 </a>
-            <a href="#"> <i class="fas fa-phone"></i> +123-852-4565</a>
-            <a href="#"> <i class="fas fa-envelope"></i> ninjashub4@gmail.com</a>
-            <a href="#"> <i class="fas fa-map"></i> karachi, pakistan</a>
+            <a href="#"> <i class="fas fa-phone"></i> (0281) 7771888 </a>
+            <a href="#"> <i class="fas fa-envelope"></i> bragahotel@gmail.com</a>
+            <a href="#"> <i class="fas fa-map"></i> Purwokerto, Indonesia</a>
         </div>
 
         <div class="box">
             <h3>quick links</h3>
-            <a href="#"> <i class="fas fa-arrow-right"></i> home</a>
-            <a href="#"> <i class="fas fa-arrow-right"></i> about</a>
-            <a href="#"> <i class="fas fa-arrow-right"></i> rooms</a>
-            <a href="#"> <i class="fas fa-arrow-right"></i> gallery</a>
-            <a href="#"> <i class="fas fa-arrow-right"></i> reservation</a>
+            <a href="#home"> <i class="fas fa-arrow-right"></i> home</a>
+            <a href="#about"> <i class="fas fa-arrow-right"></i> about</a>
+            <a href="#room"> <i class="fas fa-arrow-right"></i> rooms</a>
         </div>
 
         <div class="box">
@@ -39,6 +36,6 @@
         <a href="#" class="fab fa-pinterest"></a>
     </div>
 
-    <div class="credit">&copy; copyright @ 2023 by <span>ninjashub</span></div>
+    <div class="credit">&copy; copyright @ 2023 by <span>Braga</span></div>
 
 </section>

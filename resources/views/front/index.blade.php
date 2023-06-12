@@ -132,24 +132,23 @@
 
         <h1 class="heading">our room</h1>
 
-        <div class="swiper room-slider">
-            <div class="swiper-wrapper">
+        <div class="">
+            <div class="w-full flex gap-10 overflow-x-auto">
                 @foreach ($room as $item)
-                    <div class="swiper-slide slide">
-                        <div class="image">
-                            <span class="price">{{ $item->price }}</span>
-                            <img src="{{ asset('storage/' . $item->photo) }}" alt="">
-                        </div>
-                        <div class="content">
-                            <h3>{{ $item->name }}</h3>
-                            <p>{{ $item->description }}</p>
-                            <a href="#" class="btn">book now</a>
-                        </div>
+                <div class="swiper-slide slide w-[400px]">
+                    <div class="image">
+                        <span class="price">{{ $item->price }}</span>
+                        <img src="{{ asset('storage/' . $item->photo) }}" alt="">
                     </div>
+                    <div class="content">
+                        <h3>{{ $item->name }}</h3>
+                        <p>{{ $item->description }}</p>
+                        <a href="#" class="btn">book now</a>
+                    </div>
+                </div>
                 @endforeach
             </div>
             <div class="swiper-pagination"></div>
-
         </div>
 
     </section>
@@ -274,7 +273,8 @@
                     {{-- <button class="btn mt-20">Join Now</button> --}}
                 </div>
                 <div class="">
-                    <img src="{{ asset('storage/' . $item->photo) }}" alt="" class="w-[300px] h-[300px] rounded-xl">
+                    <img src="{{ asset('storage/' . $item->photo) }}" alt=""
+                        class="w-[300px] h-[300px] rounded-xl">
                 </div>
             @endforeach
         </div>

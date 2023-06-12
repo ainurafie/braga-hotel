@@ -4,7 +4,6 @@
     <a href="#home">home</a>
     <a href="#about">about</a>
     <a href="#room">room</a>
-    <a href="#gallery">gallery</a>
     @guest
         <a href="{{ route('login') }}" class="btn">Sign In</a>
     @else
