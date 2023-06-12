@@ -4,7 +4,7 @@
       <a href="{{ route('index') }}">Braga Hotel</a>
     </div>
     <div class="sidebar-brand sidebar-brand-sm">
-      <a href="{{ route('index') }}">RM</a>
+      <a href="{{ route('index') }}">BH</a>
     </div>
     <ul class="sidebar-menu">
       @if (Auth::user()->role == 'USER')
@@ -19,7 +19,7 @@
           </a>
         </li> --}}
 
-        <li class="menu-header">TRANSAKSI</li>
+        <li class="menu-header">BOOKING</li>
         <li class="{{ request()->is('my-booking-list*') ? 'active' : '' }}">
           <a class="nav-link" href="{{ route('my-booking-list.index') }}">
             <i class="fas fa-list"></i> <span>My Booking List</span>
@@ -40,7 +40,7 @@
         <li class="menu-header">Dashboard</li>
         <li><a class="nav-link" href="{{ route('admin.dashboard') }}"><i class="fas fa-fire"></i> <span>Dashboard</span></a></li>
 
-        <li class="menu-header">DATA MASTER</li>
+        <li class="menu-header">DATA KAMAR</li>
         <li class="{{ request()->is('admin/room*') ? 'active' : '' }}">
           <a class="nav-link" href="{{ route('room.index') }}">
             <i class="fas fa-door-open"></i> <span>Ruangan</span>
@@ -62,7 +62,7 @@
           </a>
         </li>
 
-        <li class="menu-header">TRANSAKSI</li>
+        <li class="menu-header">BOOKING</li>
         <li class="{{ request()->is('admin/booking-list*') ? 'active' : '' }}">
           <a class="nav-link" href="{{ route('booking-list.index') }}">
             @inject('booking_list', 'App\Models\BookingList')
