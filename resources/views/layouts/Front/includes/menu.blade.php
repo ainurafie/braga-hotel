@@ -1,4 +1,4 @@
-<a href="{{ route('index') }}" class="logo"> <i class="fas fa-hotel"></i> hotel </a>
+<a href="{{ route('index') }}" class="logo w-24 h-auto"> <img src="../assets/images/logo.svg" alt="">
 
 <nav class="navbar">
     <a href="#home">home</a>

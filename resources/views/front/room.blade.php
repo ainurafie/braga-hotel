@@ -52,7 +52,7 @@
                                     <p>{{ $item->description }}</p>
                                 </div>
 
-                                <a href="{{ route('index.check.out', $item->id) }}" class="primary-btn">Book Now <i class="lnr lnr-arrow-right"></i></a>
+                                <a href="{{ route('index.check.out', $item->id) }}" class="primary-btn text-center">Book Now</a>
                             </div>
                         </div>
                     </div>
