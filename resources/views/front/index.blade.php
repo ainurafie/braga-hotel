@@ -138,10 +138,15 @@
                     <div class="swiper-slide slide w-[400px]">
                         <div class="image">
                             <span class="price">{{ $item->price }}</span>
-                            <img src="{{ asset('storage/' . $item->photo) }}" alt="">
+                            @php
+                                $photos[] = json_decode($item->photo);
+                            @endphp
+                            @foreach ($photos as $image)
+                                <img src="{{ asset('storage/' . $image[0]) }}" alt="">
+                            @endforeach
                         </div>
                         <div class="content">
-                            <h3>{{ $item->name }}</h3>
+                            <h3>Nomer {{ $item->name }}</h3>
                             <p>{{ $item->description }}</p>
                             <a href="#" class="btn">book now</a>
                         </div>

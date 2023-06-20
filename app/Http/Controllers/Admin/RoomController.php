@@ -10,6 +10,8 @@ use App\Models\Room;
 use App\Http\Requests\Admin\RoomRequest;
 use App\Models\RoomCategory;
 use DataTables;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Validation\Rule;
 
 class RoomController extends Controller
 {
@@ -61,7 +63,13 @@ class RoomController extends Controller
         $data['price'] = $formattedPrice;
 
         if ($request->hasFile('photo')) {
-            $data['photo'] = $request->file('photo')->store('assets/image/room', 'public');
+            $photos = [];
+            foreach ($request->file('photo') as $photo) {
+                $path = $photo->store('assets/image/room', 'public');
+                $photos[] = $path;
+            }
+            $data['photo'] = json_encode($photos); // Mengonversi array foto menjadi string JSON
+            $data['photo'] = htmlspecialchars_decode($data['photo']);
         }
 
         $createRoom = Room::create($data);
@@ -74,6 +82,8 @@ class RoomController extends Controller
 
         return redirect()->route('room.index');
     }
+
+
 
 
     /**
@@ -114,20 +124,48 @@ class RoomController extends Controller
      */
     public function update(RoomRequest $request, $id)
     {
+        $request->validate([
+            'name' => [
+                'required',
+                'string',
+                'max:100',
+                Rule::unique('rooms')->whereNull('deleted_at')->ignore($id),
+            ],
+        ], [
+            'name.required' => 'Nama ruangan harus diisi.',
+            'name.string' => 'Nama ruangan harus berupa teks.',
+            'name.max' => 'Nama ruangan tidak boleh melebihi :max karakter.',
+            'name.unique' => 'Nama ruangan sudah digunakan.',
+        ]);
+
         $data = $request->all();
+        $item = Room::findOrFail($id);
 
         $price = str_replace(['.', ','], '', $data['price']);
         $formattedPrice = number_format((float) $price, 2, '.', '');
         $data['price'] = $formattedPrice;
 
-        if (isset($data['photo'])) {
-            $data['photo']          = $request->file('photo')->store(
-                'assets/image/room',
-                'public'
-            );
+
+        if ($request->hasFile('photo')) {
+            $photos = [];
+            foreach ($request->file('photo') as $photo) {
+                $path = $photo->store('assets/image/room', 'public');
+                $photos[] = $path;
+            }
+            $data['photo'] = json_encode($photos);
+
+            // Hapus foto lama jika ada
+            if ($item->photo) {
+                $oldPhotos = json_decode(htmlspecialchars_decode($item->photo));
+                foreach ($oldPhotos as $oldPhoto) {
+                    Storage::disk('public')->delete($oldPhoto);
+                }
+            }
+            $data['photo'] = htmlspecialchars_decode($data['photo']);
+        } else {
+            $data['photo'] = $item->photo;
         }
 
-        $item = Room::findOrFail($id);
 
         if ($item->update($data)) {
             $request->session()->flash('alert-success', 'Ruang ' . $item->name . ' berhasil diupdate');
@@ -147,6 +185,13 @@ class RoomController extends Controller
     public function destroy($id)
     {
         $item = Room::findOrFail($id);
+
+        if ($item->photo) {
+            $photos = json_decode(htmlspecialchars_decode($item->photo));
+            foreach ($photos as $photo) {
+                Storage::disk('public')->delete($photo);
+            }
+        }
 
         if ($item->delete()) {
             session()->flash('alert-success', 'Ruang ' . $item->name . ' berhasil dihapus!');

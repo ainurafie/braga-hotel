@@ -28,7 +28,7 @@
             <tr>
                 <th>#</th>
                 <th>Foto</th>
-                <th>Nama</th>
+                <th>Nomor Kamar</th>
                 <th>Deskripsi</th>
                 <th>Kapasitas</th>
                 <th>Harga</th>
@@ -60,15 +60,20 @@
                         searchable: false,
                         render: function(data, type, row) {
                             if (data != null) {
+                                let decodedData = data.replace(/&quot;/g, '"');
+                                let photos = JSON.parse(decodedData);
+                                // let photos = JSON.decode(data);
+                                let firstPhoto = photos.length > 0 ? photos[0] : '-';
                                 return `<div class="gallery gallery-fw">` +
-                                    `<a href="{{ asset('storage/${data}') }}" data-toggle="lightbox">` +
-                                    `<img src="{{ asset('storage/${data}') }}" class="img-fluid" style="min-width: 80px; height: auto;">` +
+                                    `<a href="${firstPhoto != '-' ? '{{ asset('storage/') }}/' + firstPhoto : '#'}" data-toggle="lightbox">` +
+                                    `<img src="{{ asset('storage/') }}/${firstPhoto != '-' ? firstPhoto : '#'}" class="img-fluid" style="min-width: 80px; height: auto;">` +
                                     `</a>` +
                                     '</div>';
                             } else {
-                                return '-'
+                                return '-';
                             }
                         }
+
                     },
                     {
                         name: 'name',

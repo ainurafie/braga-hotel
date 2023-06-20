@@ -67,7 +67,7 @@
 
         @slot('input_form')
 
-            @component('components.input-field')
+            {{-- @component('components.input-field')
                 @slot('input_label', 'Nama')
                 @slot('input_type', 'text')
                 @slot('input_name', 'name')
@@ -76,14 +76,36 @@
                         {{ $item->name }}
                     @endslot
                 @endisset
-                @isset($item)
-                    @slot('other_attributes', 'disabled')
-                @endisset
                 @empty($item)
                     @slot('form_group_class', 'required')
                     @slot('other_attributes', 'required autofocus')
                 @endempty
+            @endcomponent --}}
+
+            @component('components.input-field')
+                @slot('input_label', 'Nomer Kamar')
+                @slot('input_type', 'select')
+                @slot('input_name', 'name')
+                @isset($item->name)
+                    @slot('select_content')
+                        <option value="">Pilih Nomer Kamar</option>
+                        @for ($i = 1; $i <= 13; $i++)
+                            <option value="{{ $i }}" @if ($item->name == $i) selected @endif>{{ $i }}</option>
+                        @endfor
+                    @endslot
+                @else
+                    @slot('select_content')
+                        <option value="">Pilih Nomer Kamar</option>
+                        @for ($i = 1; $i <= 13; $i++)
+                            <option value="{{ $i }}">{{ $i }}</option>
+                        @endfor
+                    @endslot
+                @endisset
+                @error('name')
+                    @include('includes.error-field', ['error' => $message])
+                @enderror
             @endcomponent
+
 
             @component('components.input-field')
                 @slot('input_label', 'Deskripsi')
@@ -137,53 +159,64 @@
                 @slot('input_id', 'price-input')
                 @isset($item->price)
                     @slot('input_value')
-                        {{ $item->price }}
+                        @if ($item->price)
+                            {{ number_format($item->price, 0, ',', '.') }}
+                        @else
+                            '-'
+                        @endif
                     @endslot
                 @endisset
             @endcomponent
 
 
+
+
             @component('components.input-field')
                 @slot('input_label', 'Foto')
                 @slot('input_type', 'file')
-                @slot('input_name', 'photo')
-                @isset($item)
-                    @slot('help_text', 'Tidak perlu input foto jika tidak ingin mengeditnya')
-                @endisset
-                @slot('input_attributes')
-                    accept="image/*"
-                @endslot
-            @endcomponent
+                @slot('input_name', 'photo[]')
+                @if (isset($item))
+                    @slot('help_text',
+                        'Tidak perlu input foto jika tidak ingin mengeditnya | Upload gambar sekaligus, dengan ukuran
+                        maksimal 2MB')
+                    @else
+                        @slot('help_text', 'Upload gambar sekaligus, dengan ukuran maksimal 2MB')
+                    @endif
 
-        @endslot
+                    @slot('other_attributes')
+                        accept="image/*" multiple
+                    @endslot
+                @endcomponent
 
-        @slot('card_footer', 'true')
-        @slot('card_footer_class', 'text-right')
-        @slot('card_footer_content')
-            @include('includes.save-cancel-btn')
-        @endslot
-    @endcomponent
+            @endslot
 
-@endsection
+            @slot('card_footer', 'true')
+            @slot('card_footer_class', 'text-right')
+            @slot('card_footer_content')
+                @include('includes.save-cancel-btn')
+            @endslot
+        @endcomponent
 
-@push('after-script')
-    <script>
-        // Mendapatkan input field dengan id 'price-input'
-        const priceInput = document.getElementById('price-input');
+    @endsection
 
-        // Format rupiah dengan tanda "." setiap 3 digit
-        priceInput.addEventListener('input', function(e) {
-            // Mengambil nilai input field
-            let value = e.target.value;
+    @push('after-script')
+        <script>
+            // Mendapatkan input field dengan id 'price-input'
+            const priceInput = document.getElementById('price-input');
 
-            // Hilangkan semua karakter kecuali angka
-            value = value.replace(/\D/g, '');
+            // Format rupiah dengan tanda "." setiap 3 digit
+            priceInput.addEventListener('input', function(e) {
+                // Mengambil nilai input field
+                let value = e.target.value;
 
-            // Format angka dengan tanda "." setiap 3 digit
-            value = value.replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.');
+                // Hilangkan semua karakter kecuali angka
+                value = value.replace(/\D/g, '');
 
-            // Assign kembali nilai yang sudah diformat ke input field
-            e.target.value = value;
-        });
-    </script>
-@endpush
+                // Format angka dengan tanda "." setiap 3 digit
+                value = value.replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.');
+
+                // Assign kembali nilai yang sudah diformat ke input field
+                e.target.value = value;
+            });
+        </script>
+    @endpush

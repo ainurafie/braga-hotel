@@ -13,7 +13,12 @@ class LandingController extends Controller
     public function index()
     {
         $room = Room::all();
+        // $photos = [];
 
+        // foreach ($room as $item) {
+        //     $photos[] = json_decode($item->photo, true);
+        // }
+        // dd($room);
         $category = RoomCategory::all();
 
         $event = Event::orderBy('updated_at', 'desc')->paginate(4);
@@ -55,7 +60,7 @@ class LandingController extends Controller
 
         return view('front.checkout', compact('room'));
     }
-    
+
 
 
 
