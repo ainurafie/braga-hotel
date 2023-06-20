@@ -7,7 +7,7 @@ use App\Http\Requests\Admin\EventRequest;
 use App\Models\Event;
 use Illuminate\Http\Request;
 use DataTables;
-
+use Illuminate\Support\Facades\Storage;
 
 class EventSettingController extends Controller
 {
@@ -133,6 +133,10 @@ class EventSettingController extends Controller
     {
         $item = Event::findOrFail($id);
 
+        if ($item->image) {
+            Storage::disk('public')->delete($item->image);
+        }
+        
         if ($item->delete()) {
             session()->flash('alert-success', 'Event ' . $item->title . ' berhasil dihapus!');
         } else {
