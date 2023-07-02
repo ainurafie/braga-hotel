@@ -6,46 +6,17 @@
     <!-- home -->
 
     <section class="home" id="home">
-
         <div class="swiper home-slider">
-
             <div class="swiper-wrapper">
-
-                <div class="swiper-slide slide" style="background: url(../assets/images/home-slide1.jpg) no-repeat;">
-                    <div class="content">
-                        <h3>it's where dreams come true</h3>
-                        <a href="#" class="btn"> visit our offer</a>
-                    </div>
+                <div class="swiper-slide slide" style="background: url(../assets/images/banner.jpeg) no-repeat;">
                 </div>
-
-                <div class="swiper-slide slide" style="background: url(../assets/images/home-slide2.jpg) no-repeat;">
-                    <div class="content">
-                        <h3>it's where dreams come true</h3>
-                        <a href="#" class="btn"> visit our offer</a>
-                    </div>
+                <div class="swiper-slide slide" style="background: url(../assets/images/banner.jpeg) no-repeat;">
                 </div>
-
-                <div class="swiper-slide slide" style="background: url(../assets/images/home-slide3.jpg) no-repeat;">
-                    <div class="content">
-                        <h3>it's where dreams come true</h3>
-                        <a href="#" class="btn"> visit our offer</a>
-                    </div>
-                </div>
-
-                <div class="swiper-slide slide" style="background: url(../assets/images/home-slide4.jpg) no-repeat;">
-                    <div class="content">
-                        <h3>it's where dreams come true</h3>
-                        <a href="#" class="btn"> visit our offer</a>
-                    </div>
-                </div>
-
+                <!-- Tambahkan slide lainnya di sini -->
             </div>
-
             <div class="swiper-button-next"></div>
             <div class="swiper-button-prev"></div>
-
         </div>
-
     </section>
 
     <!-- end -->
@@ -125,41 +96,6 @@
     </section>
 
     <!-- end -->
-
-    <!-- room -->
-
-    <section class="room" id="room">
-
-        <h1 class="heading">our room</h1>
-
-        <div class="">
-            <div class="w-full flex gap-10 overflow-x-auto">
-                @foreach ($room as $item)
-                    <div class="swiper-slide slide w-[400px]">
-                        <div class="image">
-                            <span class="price">{{ $item->price }}</span>
-                            @php
-                                $photos[] = json_decode($item->photo);
-                            @endphp
-                            @foreach ($photos as $image)
-                                <img src="{{ asset('storage/' . $image[0]) }}" alt="">
-                            @endforeach
-                        </div>
-                        <div class="content">
-                            <h3>Nomer {{ $item->name }}</h3>
-                            <p>{{ $item->description }}</p>
-                            <a href="#" class="btn">book now</a>
-                        </div>
-                    </div>
-                @endforeach
-            </div>
-            <div class="swiper-pagination"></div>
-        </div>
-
-    </section>
-
-    <!-- end -->
-
     <!-- services -->
 
     <section class="services">
@@ -196,8 +132,7 @@
             </div>
 
             <div class="box flex flex-col items-center">
-                <svg width="60" height="60" viewBox="0 0 60 60" fill="none"
-                    xmlns="http://www.w3.org/2000/svg">
+                <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
                         d="M6.73719 5.59473L49.9126 48.7701C50.7318 49.5894 51.192 50.7006 51.192 51.8592C51.192 53.0178 50.7318 54.129 49.9126 54.9482C49.0931 55.7672 47.982 56.2272 46.8235 56.2272C45.665 56.2272 44.5539 55.7672 43.7345 54.9482L33.1876 44.2197C32.4974 43.5189 32.1102 42.5749 32.1095 41.5912V40.9432C32.1095 40.4465 32.011 39.9547 31.8195 39.4965C31.6279 39.0382 31.3473 38.6225 30.9938 38.2736L29.6321 37.0162C29.1698 36.5897 28.6077 36.2863 27.9975 36.1339C27.3872 35.9815 26.7484 35.9851 26.1399 36.1443C25.1804 36.3948 24.172 36.3899 23.2149 36.1303C22.2577 35.8707 21.3851 35.3653 20.6837 34.6643L10.6723 24.6518C4.73328 18.7127 2.54773 9.74434 6.73719 5.59473Z"
                         stroke="#0077B6" stroke-width="4" stroke-linejoin="round" />
@@ -213,8 +148,7 @@
         </div>
         <div class="box-container">
             <div class="box flex flex-col items-center">
-                <svg width="60" height="60" viewBox="0 0 60 60" fill="none"
-                    xmlns="http://www.w3.org/2000/svg">
+                <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
                         d="M48.4 11.8077C46.7665 10.1551 44.6867 9.01456 42.4151 8.52552C40.1435 8.03648 37.7787 8.2202 35.6099 9.05419C33.4411 9.88818 31.5624 11.3363 30.2037 13.2213C28.8451 15.1063 28.0653 17.3465 27.96 19.6677L40.528 32.2357C42.8477 32.1304 45.0866 31.3515 46.9709 29.9944C48.8552 28.6372 50.3033 26.7606 51.1383 24.5937C51.9733 22.4269 52.159 20.0637 51.6727 17.793C51.1864 15.5224 50.0492 13.4425 48.4 11.8077ZM18.688 33.0077L10.2 41.5077C9.45007 42.2578 9.02881 43.2751 9.02881 44.3357C9.02881 45.3964 9.45007 46.4136 10.2 47.1637L13.028 49.9917C13.7781 50.7416 14.7953 51.1629 15.856 51.1629C16.9166 51.1629 17.9338 50.7416 18.684 49.9917L27.168 41.5077L35.656 33.0197L27.172 24.5357L18.688 33.0077ZM21.652 41.3557L18.824 38.5277L27.172 30.1917L30 33.0197L21.652 41.3557Z"
                         fill="#0077B6" />
@@ -264,64 +198,45 @@
     </section>
 
     <!-- end -->
+    <!-- room -->
 
-    <!-- gallery -->
+    <section class="room" id="room">
 
-    {{-- <section class="gallery" id="gallery">
-
-        <h1 class="heading">our gallery</h1>
+        <h1 class="heading">our room</h1>
 
         <div class="swiper gallery-slider">
 
             <div class="swiper-wrapper">
 
                 <div class="swiper-slide slide">
-                    <img src="../assets/images/gallery1.jpg" alt="">
-                    <div class="icon">
-                        <i class="fas fa-magnifying-glass-plus"></i>
-                    </div>
+                    <img src="../assets/images/room1.jpeg" alt="">
                 </div>
 
                 <div class="swiper-slide slide">
-                    <img src="../assets/images/gallery2.jpg" alt="">
-                    <div class="icon">
-                        <i class="fas fa-magnifying-glass-plus"></i>
-                    </div>
+                    <img src="../assets/images/room2.jpeg" alt="">
                 </div>
 
                 <div class="swiper-slide slide">
-                    <img src="../assets/images/gallery3.jpg" alt="">
-                    <div class="icon">
-                        <i class="fas fa-magnifying-glass-plus"></i>
-                    </div>
+                    <img src="../assets/images/room3.jpeg" alt="">
                 </div>
 
                 <div class="swiper-slide slide">
-                    <img src="../assets/images/gallery4.jpg" alt="">
-                    <div class="icon">
-                        <i class="fas fa-magnifying-glass-plus"></i>
-                    </div>
+                    <img src="../assets/images/room4.jpeg" alt="">
                 </div>
 
                 <div class="swiper-slide slide">
-                    <img src="../assets/images/gallery5.jpg" alt="">
-                    <div class="icon">
-                        <i class="fas fa-magnifying-glass-plus"></i>
-                    </div>
+                    <img src="../assets/images/room5.jpeg" alt="">
                 </div>
 
                 <div class="swiper-slide slide">
-                    <img src="../assets/images/gallery6.jpg" alt="">
-                    <div class="icon">
-                        <i class="fas fa-magnifying-glass-plus"></i>
-                    </div>
+                    <img src="../assets/images/room6.jpeg" alt="">
                 </div>
 
             </div>
 
         </div>
 
-    </section> --}}
+    </section>
 
     <!-- end -->
 
@@ -330,22 +245,111 @@
 
 
     <section>
-        <h1 class="heading">Event</h1>
-        <div class="flex gap-8 items-center">
-            @foreach ($event as $item)
-                <div class="w-1/2">
-
-                    <h1 class="text-[30px] text-blue-500 font-semibold">{{ $item->title }}</h1>
-                    <h1 class="text-[16px] text-blue-500 font-medium mb-5">{{ $item->date }}</h1>
-                    <h1 class="text-[16px] text-blue-500 font-medium">{{ $item->description }}</h1>
-                    {{-- <button class="btn mt-20">Join Now</button> --}}
-                </div>
-                <div class="">
-                    <img src="{{ asset('storage/' . $item->photo) }}" alt=""
-                        class="w-[300px] h-[300px] rounded-xl">
-                </div>
-            @endforeach
+        <h1 class="heading" id="event">Event</h1>
+        <div class="flex justify-between items-center gap-10">
+            <div class="w-1/2">
+                <h1 class="text-[64px] font-semibold">“Music</h1>
+                <h1 class="text-[48px]">heals<br>everything.”</h1>
+                <h1 class="text-[32px]">While enjoying music,you cancapture the moment. You won't miss a single moment with
+                    us</h1>
+            </div>
+            <div class="grid  lg:grid-cols-2 grid-cols-1 gap-8 items-center w-full">
+                @foreach ($event as $item)
+                    <a class="gallery-item" href="#"><img src="{{ asset('storage/' . $item->photo) }}"
+                            alt="Headshot of George Washington"><span class="text-wrapper"><span class="name">
+                                <h1 class="text-3xl font-semibold">{{ $item->title }}</h1>
+                                <h1 class="text-base">{{ $item->date }}</h1>
+                                <h1 class="text-sm">{{ $item->description }}</h1>
+                            </span></a>
+                @endforeach
+                {{-- @foreach ($event as $item)
+                    <div class="w-1/2">
+    
+                        <h1 class="text-[30px] text-blue-500 font-semibold">{{ $item->title }}</h1>
+                        <h1 class="text-[16px] text-blue-500 font-medium mb-5">{{ $item->date }}</h1>
+                        <h1 class="text-[16px] text-blue-500 font-medium">{{ $item->description }}</h1>
+                    </div>
+                    <div class="">
+                        <img src="{{ asset('storage/' . $item->photo) }}" alt=""
+                            class="w-[300px] h-[300px] rounded-xl">
+                    </div>
+                @endforeach --}}
+            </div>
         </div>
     </section>
     <!-- end -->
 @endsection
+@push('js')
+    <script>
+        // Inisialisasi Swiper
+        var swiper = new Swiper('.home-slider', {
+            // Tambahkan opsi-opsi Swiper yang diperlukan di sini
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+        });
+    </script>
+@endpush
+@push('css')
+    <style>
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .gallery-item {
+            width: 354px;
+            height: 373px;
+            border-radius: 15px;
+            margin: 10px;
+            text-decoration: none;
+        }
+
+        .gallery-item img {
+            position: absolute;
+            width: 354px;
+            height: 373px;
+            border-radius: 15px;
+        }
+
+        .text-wrapper {
+            position: relative;
+            width: 354px;
+            height: 373px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+            color: #fff;
+            opacity: 0;
+            border-radius: 15px;
+        }
+
+        .text-wrapper:hover {
+            transition: all 0.8s ease;
+            background: rgba(0, 0, 0, 0.6);
+            opacity: 1;
+            border-radius: 15px;
+        }
+
+        .name {
+            font-size: 1.5em;
+        }
+
+
+        /* Because there is no hover on a touch devide, we need to move the text to the bottom of the image and display it by default */
+
+        @media only screen and (max-width: 1024px) {
+            .text-wrapper {
+                opacity: 1;
+                justify-content: flex-end;
+                text-shadow: 1px 1px 1px #000;
+            }
+
+            .title {
+                margin-bottom: 1em;
+            }
+        }
+    </style>
+@endpush
