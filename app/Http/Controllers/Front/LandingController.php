@@ -43,7 +43,6 @@ class LandingController extends Controller
 
             $rooms = Room::where('capacity', '>=', $validatedData['capacity'])
                 ->where('category_id', $validatedData['category_id'])
-                ->take(3)
                 ->get();
         }
 

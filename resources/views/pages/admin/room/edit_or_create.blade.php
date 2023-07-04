@@ -89,16 +89,39 @@
                 @isset($item->name)
                     @slot('select_content')
                         <option value="">Pilih Nomer Kamar</option>
-                        @for ($i = 1; $i <= 13; $i++)
+                        <option value="101" @if ($item->name == 101) selected @endif>Kamar 101</option>
+                        <option value="102" @if ($item->name == 102) selected @endif>Kamar 102</option>
+                        <option value="103" @if ($item->name == 103) selected @endif>Kamar 103</option>
+                        <option value="201" @if ($item->name == 201) selected @endif>Kamar 201</option>
+                        <option value="202" @if ($item->name == 202) selected @endif>Kamar 202</option>
+                        <option value="203" @if ($item->name == 203) selected @endif>Kamar 203</option>
+                        <option value="205" @if ($item->name == 205) selected @endif>Kamar 205</option>
+                        <option value="206" @if ($item->name == 206) selected @endif>Kamar 206</option>
+                        <option value="301" @if ($item->name == 301) selected @endif>Kamar 301</option>
+                        <option value="302" @if ($item->name == 302) selected @endif>Kamar 302</option>
+                        <option value="303" @if ($item->name == 303) selected @endif>Kamar 303</option>
+                        <option value="305" @if ($item->name == 305) selected @endif>Kamar 305</option>
+                        <option value="306" @if ($item->name == 306) selected @endif>Kamar 306</option>
+                        {{-- @for ($i = 1; $i <= 13; $i++)
                             <option value="{{ $i }}" @if ($item->name == $i) selected @endif>{{ $i }}</option>
-                        @endfor
+                        @endfor --}}
                     @endslot
                 @else
                     @slot('select_content')
                         <option value="">Pilih Nomer Kamar</option>
-                        @for ($i = 1; $i <= 13; $i++)
-                            <option value="{{ $i }}">{{ $i }}</option>
-                        @endfor
+                        <option value="101">Kamar 101</option>
+                        <option value="102">Kamar 102</option>
+                        <option value="103">Kamar 103</option>
+                        <option value="201">Kamar 201</option>
+                        <option value="202">Kamar 202</option>
+                        <option value="203">Kamar 203</option>
+                        <option value="205">Kamar 205</option>
+                        <option value="206">Kamar 206</option>
+                        <option value="301">Kamar 301</option>
+                        <option value="302">Kamar 302</option>
+                        <option value="303">Kamar 303</option>
+                        <option value="305">Kamar 305</option>
+                        <option value="306">Kamar 306</option>
                     @endslot
                 @endisset
                 @error('name')
@@ -130,7 +153,8 @@
                     @slot('select_content')
                         <option value="">Pilih Kategori</option>
                         @foreach ($category as $itemCategory)
-                            <option value="{{ $itemCategory->id }}" @if (isset($item->category_id) && $item->category_id == $itemCategory->id) selected @endif>{{ $itemCategory->name }}
+                            <option value="{{ $itemCategory->id }}" @if (isset($item->category_id) && $item->category_id == $itemCategory->id) selected @endif>
+                                {{ $itemCategory->name }}
                             </option>
                         @endforeach
                     @endslot

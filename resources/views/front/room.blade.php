@@ -28,17 +28,8 @@
             @foreach ($rooms as $item)
                 <div class="rooms-page-item">
                     <div class="row">
-                        <div class="col-lg-6">
-                            <div class="room-pic-slider owl-carousel">
-                                <div class="single-room-pic">
-                                    <img src="{{ asset('storage/' . $item->photo) }}" alt="">
-                                </div>
-                                <div class="single-room-pic">
-                                    <img src="../assets/img/room/rooms-2.jpg" alt="">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
+                        
+                        <div class="col-lg-12">
                             <div class="room-text">
                                 <div class="room-title">
                                     <h2>{{ $item->name }}</h2>
@@ -81,6 +72,12 @@
     <link rel="stylesheet" href="../css/front/css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="../css/front/css/style.css" type="text/css">
     <link rel="stylesheet" href="../assets/css/front.css">
+
+    <style>
+        .room-text {
+            padding-left: 30px !important;
+        }
+    </style>
 @endpush
 
 @push('js')

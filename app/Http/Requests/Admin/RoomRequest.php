@@ -25,6 +25,7 @@ class RoomRequest extends FormRequest
     public function rules()
     {
         return [
+            'name'              => 'required|string',
             'description'       => 'nullable|string',
             'capacity'          => 'nullable|numeric|lt:100000',
             'price'             => 'nullable|numeric|gt:0',
@@ -36,6 +37,7 @@ class RoomRequest extends FormRequest
     public function messages()
     {
         return [
+            'name.string' => 'Deskripsi harus berupa teks.',
             'description.string' => 'Deskripsi harus berupa teks.',
             'capacity.numeric' => 'Kapasitas harus berupa angka.',
             'capacity.lt' => 'Kapasitas tidak boleh melebihi 100000.',
