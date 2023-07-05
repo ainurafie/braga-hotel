@@ -72,7 +72,7 @@
 
             </div>
 
-            <input type="submit" value="check availability" class="btn">
+            <button type="submit" value="" class="btn bg-[#0077b6]">check availability</button>
 
         </form>
 
