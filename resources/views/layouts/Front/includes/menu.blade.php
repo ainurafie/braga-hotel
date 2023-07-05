@@ -8,7 +8,7 @@
     @guest
         <a href="{{ route('login') }}" class="btn">Sign In</a>
     @else
-        <a href="#availability" class="btn">Book Now</a>
+        <a href="/dashboard" class="btn">Dashboard</a>
     @endguest
 </nav>
 
