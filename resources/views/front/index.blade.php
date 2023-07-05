@@ -23,7 +23,7 @@
 
     <!-- availability -->
 
-    <section class="availability">
+    <section class="availability" id="availability">
 
         <form action="{{ route('index.check.room') }}" method="GET">
 
